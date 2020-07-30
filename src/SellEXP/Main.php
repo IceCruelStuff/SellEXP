@@ -26,6 +26,9 @@ use onebone\economyapi\EconomyAPI;
 class Main extends PluginBase implements Listener
 {
 
+    public $sellexp;
+    public $xpmessages;
+
     public function onEnable(): void
     {
         $files = array("sellexp.yml", "xpmessages.yml");
@@ -57,7 +60,7 @@ class Main extends PluginBase implements Listener
 
                     if (isset($args[0]) && strtolower($args[0]) == "amount") {
                         if (!$sender->hasPermission("sellexp.amount")) {
-                            $error_handPermission = $this->messages->get("error-nopermission-sellEXPAmount");
+                            $error_handPermission = $this->xpmessages->get("error-nopermission-sellEXPAmount");
                             $sender->sendMessage(TextFormat::RED . TextFormat::BOLD . "Error: " . TextFormat::RESET . TextFormat::RED . $error_handPermission);
                             return false;
                         }
