@@ -1,0 +1,18 @@
+name: SellEXP
+api: 3.14.0
+main: SellEXP\Main
+version: 1.0.0
+commands:
+  sellexp:
+    description: "Sells the item in your hand or all of your inventory's contents"
+    permission: sellexp.command
+permissions:
+  sellexp:
+    default: true
+    children:
+      sellexp.amount:
+        default: true
+      sellexp.all:
+        default: true
+      sellexp.command:
+        default: true
