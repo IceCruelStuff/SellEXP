@@ -2,6 +2,8 @@ name: SellEXP
 api: 3.14.0
 main: SellEXP\Main
 version: 1.0.0
+depend: [EconomyAPI]
+load: STARTUP
 commands:
   sellexp:
     description: "Sells the item in your hand or all of your inventory's contents"
