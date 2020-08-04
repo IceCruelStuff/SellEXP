@@ -38,6 +38,7 @@ class Main extends PluginBase implements Listener
                 file_put_contents($this->getDataFolder() . $file, $this->getResource($file));
             }
         }
+
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->sellexp = new Config($this->getDataFolder() . "sellexp.yml", Config::YAML);
         $this->xpmessages = new Config($this->getDataFolder() . "xpmessages.yml", Config::YAML);
@@ -64,6 +65,7 @@ class Main extends PluginBase implements Listener
                             $sender->sendMessage(TextFormat::RED . TextFormat::BOLD . "Error: " . TextFormat::RESET . TextFormat::RED . $error_handPermission);
                             return false;
                         }
+
                         $xp = $sender->getInventory()->getXPAmount();
                         $xpId = $item->getXP();
                         if ($item->getId() === 0) {
@@ -74,6 +76,7 @@ class Main extends PluginBase implements Listener
                             $sender->sendMessage(TextFormat::RED . TextFormat::BOLD ."Error: ". TextFormat::RESET . TextFormat::GREEN . $XPAmount->getName() . TextFormat::DARK_RED ." cannot be sold.");
                             return false;
                         }
+
                         EconomyAPI::getInstance()->addMoney($sender, $this->sell->get($XPAmount) * $xp->getCount());
                         $sender->getInventory()->removeEXP($XPAmount);
                         $price = $this->sell->get($xp->getInventory()) * $xp->getCount();
@@ -85,6 +88,7 @@ class Main extends PluginBase implements Listener
                             $sender->sendMessage(TextFormat::RED . TextFormat::BOLD . "Error: " . TextFormat::RESET . TextFormat::RED . $error_allPermission);
                             return false;
                         }
+
                         $items = $sender->getInventory()->getContents();
                         foreach ($items as $item) {
                             if ($this->sell->get($item->getId()) !== null && $this->sell->get($item->getId()) > 0) {
